@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 # Title and Introduction
-st.title("Prediscan Medtech Details for the Retinal vessels Caliber and Diseases Diagnosis")
+st.title("Prediscan Medtech Details for Retinal Vessels Caliber and Diseases Diagnosis")
 st.markdown("""
 Detailed information on quantifiable parameters, threshold values, and recommendations for additional tests.
 """)
@@ -22,8 +22,7 @@ options = [
     "Age-Related Macular Degeneration",
     "Hypertensive Retinopathy",
     "Retinopathy of Prematurity",
-    "Central Serous Chorioretinopathy",
-    "When Additional Tests Are Recommended"
+    "Central Serous Chorioretinopathy"
 ]
 selected_option = st.sidebar.selectbox("Select a Disease", options)
 
@@ -40,6 +39,7 @@ if selected_option == "Diabetic Retinopathy":
     
     st.subheader("Threshold Values and Abnormalities")
     st.table([
+        ["Feature", "Normal Threshold", "Abnormal Threshold", "Mathematical Formula/Logic"],
         ["Microaneurysms", "No microaneurysms in any field", "≥ 5 in one field", "Count microaneurysms in each field; if > 5 in any field, classify as abnormal."],
         ["Hemorrhages", "None", "> 5 dot/blot hemorrhages in one field", "Classify and count hemorrhages; if > 5 in any field, classify as abnormal."],
         ["Hard Exudates", "None", "Within 500 µm of fovea", "Measure distance from fovea; if within 500 µm, classify as abnormal."],
@@ -49,16 +49,9 @@ if selected_option == "Diabetic Retinopathy":
     ])
     
     st.subheader("Additional Tests")
-    st.subheader("Optical Coherence Tomography (OCT):")
-    st.write("- Recommended when macular edema is suspected based on visible swelling or distortion of the macula in the fundus image.Used to quantify central macular thickness and confirm subretinal fluid accumulation.")
-    st.subheader("Fluorescein Angiography (FA)")
-    st.write("- Recommended when neovascularization is suspected but not clearly visible in the fundus image. Used to identify areas of vascular leakage, ischemia, or abnormal vessel growth.")
-    st.subheader("OCT Angiography (OCTA)")
-    st.write("- Recommended for detailed visualization of retinal vasculature without the need for dye injection, especially in cases of suspected diabetic macular ischemia.")
-    
-    
-    
-
+    st.write("- **Optical Coherence Tomography (OCT):** Suspected macular edema or subretinal fluid")
+    st.write("- **Fluorescein Angiography (FA):** Suspected neovascularization or vascular leakage")
+    st.write("- **OCT Angiography (OCTA):** Suspected diabetic macular ischemia")
 
 elif selected_option == "Glaucoma":
     st.header("Glaucoma")
@@ -71,6 +64,7 @@ elif selected_option == "Glaucoma":
     
     st.subheader("Threshold Values and Abnormalities")
     st.table([
+        ["Feature", "Normal Threshold", "Abnormal Threshold", "Mathematical Formula/Logic"],
         ["Cup-to-Disc Ratio (Vertical)", "< 0.3", "> 0.6", "Calculate vertical CDR = Vertical Cup Diameter / Vertical Disc Diameter."],
         ["Neuroretinal Rim Width", "Follows ISNT Rule", "Violation of ISNT Rule", "Measure width in inferior, superior, nasal, temporal quadrants."],
         ["Retinal Nerve Fiber Layer Defects", "Uniform thickness", "Wedge-shaped defects", "Identify wedge-shaped defects visually."],
@@ -79,12 +73,9 @@ elif selected_option == "Glaucoma":
     ])
     
     st.subheader("Additional Tests")
-    st.subheader("Optical Coherence Tomography (OCT):")
-    st.write("- Recommended when abnormalities in the cup-to-disc ratio or neuroretinal rim width are detected in the fundus image. Used to measure retinal nerve fiber layer (RNFL) thickness and ganglion cell complex (GCC) for early detection of glaucomatous damage.")
-    st.subheader("Visual Field Testing (Perimetry)")
-    st.write("Recommended when structural changes in the optic disc or RNFL are observed but functional loss is unclear.")
-    st.subheader("OCT Angiography (OCTA)")
-    st.write("Recommended to assess vascular changes in the optic nerve head and peripapillary region, particularly in cases of normal-tension glaucoma.")
+    st.write("- **Optical Coherence Tomography (OCT):** Detected abnormalities in cup-to-disc ratio or neuroretinal rim width")
+    st.write("- **Visual Field Testing (Perimetry):** Structural changes in the optic disc or RNFL with unclear functional loss")
+    st.write("- **OCT Angiography (OCTA):** Assessment of vascular changes in the optic nerve head, particularly in normal-tension glaucoma")
     
     st.subheader("Logics and Checks")
     st.write("- Both eyes should have elevated CDR for a definitive diagnosis.")
@@ -99,17 +90,15 @@ elif selected_option == "Age-Related Macular Degeneration":
     
     st.subheader("Threshold Values and Abnormalities")
     st.table([
+        ["Feature", "Normal Threshold", "Abnormal Threshold", "Mathematical Formula/Logic"],
         ["Drusen Size", "Small (< 63 µm)", "Intermediate (63–124 µm), Large (> 125 µm)", "Measure drusen diameter."],
         ["Geographic Atrophy", "Absent", "Present", "Measure area of RPE loss."]
     ])
     
     st.subheader("Additional Tests")
-    st.subheader("Optical Coherence Tomography (OCT):")
-    st.write("Recommended when drusen are large (>125 µm) or geographic atrophy is suspected. Used to quantify drusen volume, detect subretinal fluid, and assess retinal pigment epithelium (RPE) integrity.")
-    st.subheader("Fluorescein Angiography (FA)")
-    st.write("Recommended when choroidal neovascularization (CNV) is suspected but not clearly visible in the fundus image. Used to identify areas of active leakage or vascular proliferation.")
-    st.subheader("OCT Angiography (OCTA)")
-    st.write("Recommended for non-invasive visualization of CNV and assessment of macular perfusion.")
+    st.write("- **Optical Coherence Tomography (OCT):** Large drusen (>125 µm) or geographic atrophy")
+    st.write("- **Fluorescein Angiography (FA):** Suspected choroidal neovascularization")
+    st.write("- **OCT Angiography (OCTA):** Non-invasive visualization of CNV and macular perfusion")
     
     st.subheader("Logics and Checks")
     st.write("- Early AMD: Presence of medium drusen.")
@@ -127,6 +116,7 @@ elif selected_option == "Hypertensive Retinopathy":
     
     st.subheader("Threshold Values and Abnormalities")
     st.table([
+        ["Feature", "Normal Threshold", "Abnormal Threshold", "Mathematical Formula/Logic"],
         ["Arteriolar Narrowing", "AVR: 0.6–0.8", "AVR: < 0.6", "Calculate AVR = Arteriolar Diameter / Venular Diameter."],
         ["Arteriovenous Nicking", "Absent", "Present", "Identify compression of veins by arteries."],
         ["Flame-Shaped Hemorrhages", "None", "Presence", "Identify and count hemorrhages."],
@@ -135,8 +125,8 @@ elif selected_option == "Hypertensive Retinopathy":
     ])
     
     st.subheader("Additional Tests")
-    st.write("- Monitor systemic blood pressure.")
-    st.write("- Evaluate for systemic complications of hypertension.")
+    st.write("- **Monitor systemic blood pressure.**")
+    st.write("- **Evaluate for systemic complications of hypertension.**")
     
     st.subheader("Logics and Checks")
     st.write("- Grade hypertensive retinopathy based on the Keith-Wagener-Barker classification.")
@@ -149,13 +139,14 @@ elif selected_option == "Retinopathy of Prematurity":
     
     st.subheader("Threshold Values and Abnormalities")
     st.table([
+        ["Feature", "Normal Threshold", "Abnormal Threshold", "Mathematical Formula/Logic"],
         ["Vascular Ridge", "Normal vascularization", "Presence of ridge", "Identify avascular zones and ridge formation."],
         ["Plus Disease", "No tortuosity", "Tortuosity score > 2", "Use standardized images to grade tortuosity and dilation."]
     ])
     
     st.subheader("Additional Tests")
-    st.write("- Perform RetCam imaging for detailed visualization.")
-    st.write("- Conduct serial examinations to monitor progression.")
+    st.write("- **Perform RetCam imaging for detailed visualization.**")
+    st.write("- **Conduct serial examinations to monitor progression.**")
     
     st.subheader("Logics and Checks")
     st.write("- Both eyes are typically affected.")
@@ -168,48 +159,17 @@ elif selected_option == "Central Serous Chorioretinopathy":
     
     st.subheader("Threshold Values and Abnormalities")
     st.table([
+        ["Feature", "Normal Threshold", "Abnormal Threshold", "Mathematical Formula/Logic"],
         ["Pigment Epithelial Detachment", "Absent", "Present", "Measure elevation of RPE."]
     ])
     
     st.subheader("Additional Tests")
-    st.write("- Perform Optical Coherence Tomography (OCT) to quantify subretinal fluid.")
-    st.write("- Conduct Fluorescein Angiography (FA) to identify leakage points.")
+    st.write("- **Perform Optical Coherence Tomography (OCT) to quantify subretinal fluid.**")
+    st.write("- **Conduct Fluorescein Angiography (FA) to identify leakage points.**")
     
     st.subheader("Logics and Checks")
     st.write("- Unilateral presentation is common.")
     st.write("- Chronic cases may lead to permanent vision loss.")
-
-elif selected_option == "When Additional Tests Are Recommended":
-    st.header("When Additional Tests Are Recommended?")
-    st.subheader("Diabetic Retinopathy")
-    st.write("- **OCT:** Suspected macular edema or subretinal fluid")
-    st.write("- **FA:** Suspected neovascularization or vascular leakage")
-    st.write("- **OCTA:** Suspected diabetic macular ischemia")
-    
-    st.subheader("Glaucoma")
-    st.write("- **OCT:** Detected abnormalities in cup-to-disc ratio or neuroretinal rim width")
-    st.write("- **FA:** Rarely needed; used only in complex cases")
-    st.write("- **OCTA:** Assessment of vascular changes in the optic nerve head")
-    
-    st.subheader("Age-Related Macular Degeneration")
-    st.write("- **OCT:** Large drusen, geographic atrophy, or suspected subretinal fluid")
-    st.write("- **FA:** Suspected choroidal neovascularization")
-    st.write("- **OCTA:** Non-invasive visualization of CNV and macular perfusion")
-    
-    st.subheader("Hypertensive Retinopathy")
-    st.write("- **OCT:** Suspected macular star or significant retinal thickening")
-    st.write("- **FA:** Rarely needed; used only in cases of suspected ischemia")
-    st.write("- **OCTA:** No specific role")
-    
-    st.subheader("Retinopathy of Prematurity")
-    st.write("- **OCT:** Rarely used; primarily for research purposes")
-    st.write("- **FA:** Rarely used; considered only in advanced cases")
-    st.write("- **OCTA:** Emerging as a potential tool for vascular assessment")
-    
-    st.subheader("Central Serous Chorioretinopathy")
-    st.write("- **OCT:** Always recommended when CSCR is suspected")
-    st.write("- **FA:** To identify leakage points and confirm active disease")
-    st.write("- **OCTA:** To assess choroidal vascular abnormalities and differentiate between active and chronic CSCR")
 
 # Footer
 st.sidebar.markdown("---")
