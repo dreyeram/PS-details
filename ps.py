@@ -2,17 +2,16 @@ import streamlit as st
 
 # Set the page configuration
 st.set_page_config(
-    page_title="Eye Disease Diagnostics",
+    page_title="Prediscan Medtech",
     page_icon="👀",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # Title and Introduction
-st.title("Eye Disease Diagnostics Using Fundus Imaging")
+st.title("Prediscan Medtech Details for the Retinal vessels Caliber and Diseases Diagnosis")
 st.markdown("""
-This application provides a comprehensive guide to diagnosing and staging various eye diseases using fundus imaging. 
-It includes detailed information on quantifiable parameters, threshold values, and recommendations for additional tests.
+Detailed information on quantifiable parameters, threshold values, and recommendations for additional tests.
 """)
 
 # Navigation Sidebar
@@ -50,12 +49,16 @@ if selected_option == "Diabetic Retinopathy":
     ])
     
     st.subheader("Additional Tests")
-    st.write("- Perform Optical Coherence Tomography (OCT) to measure macular thickness.")
-    st.write("- Conduct Fluorescein Angiography (FA) to detect neovascularization and leakage.")
+    st.subheader("Optical Coherence Tomography (OCT):")
+    st.write("- Recommended when macular edema is suspected based on visible swelling or distortion of the macula in the fundus image.Used to quantify central macular thickness and confirm subretinal fluid accumulation.")
+    st.subheader("Fluorescein Angiography (FA)")
+    st.write("- Recommended when neovascularization is suspected but not clearly visible in the fundus image. Used to identify areas of vascular leakage, ischemia, or abnormal vessel growth.")
+    st.subheader("OCT Angiography (OCTA)")
+    st.write("- Recommended for detailed visualization of retinal vasculature without the need for dye injection, especially in cases of suspected diabetic macular ischemia.")
     
-    st.subheader("Logics and Checks")
-    st.write("- Both eyes should show signs of diabetic retinopathy for a definitive diagnosis.")
-    st.write("- Use the International Clinical Diabetic Retinopathy Disease Severity Scale.")
+    
+    
+
 
 elif selected_option == "Glaucoma":
     st.header("Glaucoma")
@@ -76,8 +79,12 @@ elif selected_option == "Glaucoma":
     ])
     
     st.subheader("Additional Tests")
-    st.write("- Perform Visual Field Testing (Perimetry) to assess visual field loss.")
-    st.write("- Use Optical Coherence Tomography (OCT) to measure RNFL thickness and ganglion cell analysis.")
+    st.subheader("Optical Coherence Tomography (OCT):")
+    st.write("- Recommended when abnormalities in the cup-to-disc ratio or neuroretinal rim width are detected in the fundus image. Used to measure retinal nerve fiber layer (RNFL) thickness and ganglion cell complex (GCC) for early detection of glaucomatous damage.")
+    st.subheader("Visual Field Testing (Perimetry)")
+    st.write("Recommended when structural changes in the optic disc or RNFL are observed but functional loss is unclear.")
+    st.subheader("OCT Angiography (OCTA)")
+    st.write("Recommended to assess vascular changes in the optic nerve head and peripapillary region, particularly in cases of normal-tension glaucoma.")
     
     st.subheader("Logics and Checks")
     st.write("- Both eyes should have elevated CDR for a definitive diagnosis.")
@@ -97,8 +104,12 @@ elif selected_option == "Age-Related Macular Degeneration":
     ])
     
     st.subheader("Additional Tests")
-    st.write("- Perform Optical Coherence Tomography (OCT) to quantify subretinal fluid and characterize drusen.")
-    st.write("- Conduct Fluorescein Angiography (FA) to detect choroidal neovascularization.")
+    st.subheader("Optical Coherence Tomography (OCT):")
+    st.write("Recommended when drusen are large (>125 µm) or geographic atrophy is suspected. Used to quantify drusen volume, detect subretinal fluid, and assess retinal pigment epithelium (RPE) integrity.")
+    st.subheader("Fluorescein Angiography (FA)")
+    st.write("Recommended when choroidal neovascularization (CNV) is suspected but not clearly visible in the fundus image. Used to identify areas of active leakage or vascular proliferation.")
+    st.subheader("OCT Angiography (OCTA)")
+    st.write("Recommended for non-invasive visualization of CNV and assessment of macular perfusion.")
     
     st.subheader("Logics and Checks")
     st.write("- Early AMD: Presence of medium drusen.")
@@ -202,7 +213,7 @@ elif selected_option == "When Additional Tests Are Recommended":
 
 # Footer
 st.sidebar.markdown("---")
-st.sidebar.write("Developed by Qwen (Alibaba Cloud)")
+st.sidebar.write("Developed by Prediscan Medtech Private Limited")
 st.sidebar.write("Sources:")
 st.sidebar.write("- American Academy of Ophthalmology (AAO)")
 st.sidebar.write("- World Health Organization (WHO)")
